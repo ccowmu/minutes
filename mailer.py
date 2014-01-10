@@ -17,14 +17,14 @@ import smtplib
 timestamp = time.strftime('%Y%m%d', time.localtime())
 datestamp = time.strftime('%a, %b %d', time.localtime())
 
-with os.popen('cat /etc/passwd |grep -e "/home" | grep -v "/bin/false" | grep -Eo "[a-z0-9_]+?@[a-z0-9]+\.[a-z]+"') as f:
+with os.popen('cat /etc/passwd |grep -e "/home" | grep -v "/bin/false" | grep -Eo "[^,]+?@[^:]+"') as f:
   emails = f.readlines()
 with open("../do_not_contact.txt", 'r') as f:
   dnc = f.readlines()
 emails = [email for email in emails if email not in dnc]
-# Comment below to use above
-with open("../mailing_list.txt", 'r') as f:
-  emails = f.readlines()
+# Uncomment to specify mailing list
+#with open("../mailing_list.txt", 'r') as f:
+#  emails = f.readlines()
 
 try:
   with open("%s.txt" % str(timestamp), 'r') as f:
