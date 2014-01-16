@@ -28,4 +28,4 @@ The cron jobs will then pull the human readable minutes from this repo, email th
 ###Reference###
 * [Markdown Syntax Cheatsheet](http://scottboms.com/downloads/documentation/markdown_cheatsheet.pdf)
 * [Online Markdown Syntax Checker](http://www.markdownviewer.com/)
-* [Github flavored markdown] https://help.github.com/articles/github-flavored-markdown
+* [Github flavored markdown](https://help.github.com/articles/github-flavored-markdown)
