@@ -21,9 +21,11 @@ Stores all the cclub minutes in markdown for easy viewing.
 * Record meeting minutes with markdown syntax and click save
   * Refer to the markdown syntax cheat sheet below for formatting help
   * I also highly suggest running the minutes through the online syntax checker below if you are unfamiliar with markdown
+  * Use the preview pane if you use the github web interface (if writing minutes via that)
 
 The cron jobs will then pull the human readable minutes from this repo, email the human readable markdown language to users, and upload the minutes to the website where the markdown is translated and displayed as html.
 
 ###Reference###
 * [Markdown Syntax Cheatsheet](http://scottboms.com/downloads/documentation/markdown_cheatsheet.pdf)
 * [Online Markdown Syntax Checker](http://www.markdownviewer.com/)
+* [Github flavored markdown] https://help.github.com/articles/github-flavored-markdown
