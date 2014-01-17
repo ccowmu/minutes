@@ -11,9 +11,9 @@ Stores all the cclub minutes in markdown for easy viewing.
 * >= Python 2.7.6
 * sendmail
 * Cron jobs
- * 0 21 \* \* \* cd /path/to/local/repo && git pull -q origin master
- * 0 22 \* \* \* cd /path/to/local/repo && ./mailer.py
- * 0 23 \* \* \* cp -n /path/to/local/repo/*.md /var/www/website/minutes/path/
+ * 30 23 \* \* \* cd /path/to/local/repo && git pull -q origin master
+ * 40 23 \* \* \* cd /path/to/local/repo && ./mailer.py
+ * 50 23 \* \* \* cp -n /path/to/local/repo/*.md /var/www/website/minutes/path/
 
 ###Instructions###
 * Click the create new file icon to the right of the repo name on this page
