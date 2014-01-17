@@ -31,7 +31,7 @@ message = 'Subject: %s\n\n%s' % ("Minutes for %s" % str(datestamp), minutes)
 
 try:
   smtpObj = smtplib.SMTP('localhost')
-  smtpObj.sendmail("minutes@ccowmu.org", emails, message)
+  smtpObj.sendmail("minutes@yakko.cs.wmich.edu", emails, message)
 except:
   #print("Error: unable to send email")
   pass
