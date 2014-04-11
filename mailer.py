@@ -18,7 +18,7 @@ timestamp = time.strftime('%Y%m%d', time.localtime())
 datestamp = time.strftime('%a, %b %d', time.localtime())
 
 with open("./mailing_list.txt", 'r') as f:
-  emails = f.readlines()
+  emails = f.read().splitlines()
 
 try:
   with open("%s.md" % str(timestamp), 'r') as f:
