@@ -17,7 +17,7 @@ import smtplib
 timestamp = time.strftime('%Y%m%d', time.localtime())
 datestamp = time.strftime('%a, %b %d', time.localtime())
 
-with open("./mailing_list.txt", 'r') as f:
+with open("mailing_list.txt", 'r') as f:
   emails = f.read().splitlines()
 
 try:
