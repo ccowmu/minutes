@@ -11,7 +11,6 @@ Please set this script to run in cron
 '''
 
 import time
-import os
 import smtplib
 
 timestamp = time.strftime('%Y%m%d', time.localtime())
