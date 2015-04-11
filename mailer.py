@@ -10,41 +10,50 @@ Please set this script to run once daily in cron
     -Recommended: 11pm
 '''
 
-import time
+import os
 import re
 import smtplib
 import sys
+import time
 
 
-when = time.localtime()
-
-if len(sys.argv) == 2:
-    if re.match(r'^\d{8}$', sys.argv[1]):
-        when = time.strptime(sys.argv[1], '%Y%m%d')
-    else:
-        print("Input Error: use 'python mailer.py YYYYMMDD' for a specific date")
-
-timestamp = time.strftime('%Y%m%d', when)
-datestamp = time.strftime('%a, %b %d', when)
-
-with open("mailing_list.txt", 'r') as f:
-    emails = f.read().splitlines()
-
-try:
-    with open("minutes/%s.md" % str(timestamp), 'r') as f:
-        minutes = f.read()
-except:
-    if len(sys.argv) == 2:
-        print("Error: %s.md not found" % str(timestamp))
-    exit()
-
-message = 'Subject: %s\n\n%s' % ("Minutes for %s" % str(datestamp), minutes)
+if len(sys.argv) > 1:
+    try:
+        folder, now = re.match(r'^(\w+)\/(\d{8})\.md$', sys.argv[1]).groups()
+        folders = [folder]
+        now = time.strptime(now, '%Y%m%d')
+    except:
+        print("Example usage: 'python mailer.py <folder>/<YYYYMMDD>.md'")
+        exit()
+else:
+    folders = [name for name in os.listdir('.') if os.path.isdir(os.path.join('.', name))]
+    now = time.localtime()
 
 try:
-    smtpObj = smtplib.SMTP('localhost')
-    smtpObj.sendmail("minutes@yakko.cs.wmich.edu", emails, message)
-    if len(sys.argv) == 2:
-        print("Minutes mailed!")
+    with open("mailing_list.txt", 'r') as f:
+        emails = f.read().splitlines()
 except:
-    if len(sys.argv) == 2:
+    print("Error: could not find mailing list")
+
+timestamp = time.strftime('%Y%m%d', now)
+datestamp = time.strftime('%a, %b %d', now)
+smtpObj = smtplib.SMTP('localhost')
+
+for folder in folders:
+    try:
+        with open("%s/%s.md" % (folder, timestamp), 'r') as f:
+            minutes = f.read()
+    except:
+        if len(sys.argv) > 1:
+            print("Error: %s/%s.md not found" % (folder, timestamp))
+        continue  # No minutes today
+
+    title = "%s minutes" % folder.capitalize() if folder != 'minutes' else "Minutes"
+    message = 'Subject: %s\n\n%s' % ("%s for %s" % (title, datestamp), minutes)
+
+    try:
+        smtpObj.sendmail("minutes@yakko.cs.wmich.edu", emails, message)
+        if len(sys.argv) > 1:
+            print("%s/%s.md mailed!" % (folder, timestamp))
+    except:
         print("Error: unable to send email")
