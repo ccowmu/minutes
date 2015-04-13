@@ -70,6 +70,7 @@ def html_to_pdf_file(source_html, output_pdf_filename, source_css_filename=None)
         pdfkit.from_string(source_html, output_pdf_filename)
 
     return output_pdf_filename 
+
 def md_to_html_email(source_md, source_css=""):
     ''' Puts HTML (assuming with inline CSS if necessary) into an email 
         message object. You will need to add subject, sender, and recipient 
