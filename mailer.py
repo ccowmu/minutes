@@ -15,7 +15,7 @@ import re
 import smtplib
 import sys
 import time
-
+import publisher
 
 if len(sys.argv) > 1:
     try:
@@ -42,6 +42,7 @@ smtpObj = smtplib.SMTP('localhost')
 for folder in folders:
     try:
         with open("%s/%s.md" % (folder, timestamp), 'r') as f:
+            # Markdown-formatted minutes
             minutes = f.read()
     except:
         if len(sys.argv) > 1:
@@ -49,10 +50,19 @@ for folder in folders:
         continue  # No minutes today
 
     title = "%s minutes" % folder.capitalize() if folder != 'minutes' else "Minutes"
-    message = 'Subject: %s\n\n%s' % ("%s for %s" % (title, datestamp), minutes)
+    # message = 'Subject: %s\n\n%s' % ("%s for %s" % (title, datestamp), minutes)
+    # Load the CSS styling from a "style.css" file within the minutes folder if it exists. If it doesn't, use no CSS formatting.
+    css_filename = "%s/style.css" % folder
+    css = publisher.from_file(css_filename) if os.path.isfile(css_filename) else ""
+
+    # Create a MIMEMultipart email object.
+    message = publisher.md_to_html_email(minutes, css)
+    message["Subject"] = "%s for %s" % (title, datestamp)
+    message["From"] = "minutes@yakko.cs.wmich.edu"
+    message["To"] = ', '.join(emails)
 
     try:
-        smtpObj.sendmail("minutes@yakko.cs.wmich.edu", emails, message)
+        smtpObj.sendmail(message["From"], message["To"], message.as_string())
         if len(sys.argv) > 1:
             print("%s/%s.md mailed!" % (folder, timestamp))
     except:
