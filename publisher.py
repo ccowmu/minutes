@@ -51,8 +51,7 @@ def md_to_html(source_md):
 def md_to_html_document(source_md, source_css=None):
     ''' Turns Markdown syntax and CSS into an HTML document. This is useful 
         for sending emails. '''
-    return '<!DOCTYPE html>\n<html>%s<body>%s</body></html>'
-        % (md_to_html(source_md), get_html_head(source_css=source_css))
+    return '<!DOCTYPE html>\n<html>%s<body>%s</body></html>' % (md_to_html(source_md), get_html_head(source_css=source_css))
 
 def css_to_html_tag(source_css):
     ''' Gets an HTML tag for inline CSS formatting from some basic CSS. '''
