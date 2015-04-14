@@ -51,6 +51,7 @@ for folder in folders:
 
     title = "%s minutes" % folder.capitalize() if folder != 'minutes' else "Minutes"
     # message = 'Subject: %s\n\n%s' % ("%s for %s" % (title, datestamp), minutes)
+
     # Load the CSS styling from a "style.css" file within the minutes folder if it exists. If it doesn't, use no CSS formatting.
     css_filename = "%s/style.css" % folder
     css = publisher.from_file(css_filename) if os.path.isfile(css_filename) else ""
@@ -62,7 +63,7 @@ for folder in folders:
     message["To"] = ', '.join(emails)
 
     try:
-        smtpObj.sendmail(message["From"], message["To"], message.as_string())
+        smtpObj.sendmail(message["From"], emails, message.as_string())
         if len(sys.argv) > 1:
             print("%s/%s.md mailed!" % (folder, timestamp))
     except:
