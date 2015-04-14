@@ -29,3 +29,4 @@ The cron jobs will then pull the human readable minutes from this repo, email th
 * [Markdown Syntax Cheatsheet](http://scottboms.com/downloads/documentation/markdown_cheatsheet.pdf)
 * [Online Markdown Syntax Checker](http://www.markdownviewer.com/)
 * [Github flavored markdown](https://help.github.com/articles/github-flavored-markdown)
+* [cclub minutes repo wiki](https://github.com/ccowmu/minutes/wiki/publisher)
