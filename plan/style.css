@@ -1,0 +1,10 @@
+/* PLAN Stylesheet */
+body {
+    font-size: 16px;
+    font-family: Verdana Arial;
+    color: black;
+}
+
+h1, h2, h3 {
+    border-bottom: 1px solid black;
+}
