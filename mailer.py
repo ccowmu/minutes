@@ -17,9 +17,10 @@ import sys
 import time
 import publisher
 
+
 if len(sys.argv) > 1:
     try:
-        folder, now = re.match(r'^(\w+)\/(\d{8})\.md$', sys.argv[1]).groups()
+        folder, now = re.match(r'(\w+)\/(\d{8})\.md$', sys.argv[1]).groups()
         folders = [folder]
         now = time.strptime(now, '%Y%m%d')
     except:
@@ -66,5 +67,6 @@ for folder in folders:
         smtpObj.sendmail(message["From"], emails, message.as_string())
         if len(sys.argv) > 1:
             print("%s/%s.md mailed!" % (folder, timestamp))
-    except:
-        print("Error: unable to send email")
+    except Exception as e:
+        print("Error: {}".format(e))
+
