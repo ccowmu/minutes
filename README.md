@@ -8,7 +8,7 @@ Stores all the cclub minutes in markdown for easy viewing.
 * Minimal user interaction
 
 ### Requirements ###
-* >= Python 2.7.6
+* Python 2.7.6 or greater
 * sendmail
 * Cron jobs
  * 30 23 \* \* \* cd /path/to/local/repo && git pull -q origin master
