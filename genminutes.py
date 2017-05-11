@@ -38,7 +38,7 @@ FILENAME = "{}{}{}.md".format(YEAR, FILE_MONTH, FILE_DAY)
 
 # This block generates the first couple of line, and puts some useful information such as the day, the people at the meeting, and the time. The data is then written to the notes file.
 LINE1 = "# {} {}, {} Meeting Minutes".format(MONTH_NAME, FORMAL_DAY, YEAR)
-LINE2 = "> Notes taken by mobyte in emacs" # This line can be edited in order to fit the notes taker.
+LINE2 = "> Notes taken by cookie in vim" # This line can be edited in order to fit the notes taker.
 LINE3 = "> {} people in attendance{}".format(PEOPLE, PEOPLE_LIST)
 LINE4 = "> {}:{} {}, On a {}, 2225 Kohrman Hall".format(HOUR.lstrip('0'), MINUTE, AMPM, DAY_NAME)
 LINE5 = "### Topic"
@@ -56,11 +56,11 @@ def filecheck():
             """
             This line can be edited to open the editor of the user's choice. In order to open with the desired editor, just replace `emacsclient -nc` with a command to open your editor.
             """
-            os.system("emacsclient -nc $argv {}".format(FILENAME))
+            os.system("vim $argv {}".format(FILENAME))
         elif user_input == "n":
             quit()
         elif user_input == "o":
-            os.system("emacsclient -nc $argv {}".format(FILENAME)) # See above if you would like to change the text editor.
+            os.system("vim -nc $argv {}".format(FILENAME)) # See above if you would like to change the text editor.
         elif user_input != "n" or user_input != "y" or user_input != "o":
             print "Invalid input."
             filecheck()
@@ -68,6 +68,6 @@ def filecheck():
         user_file = open(FILENAME, 'w+')
         user_file.write("{}\n{}\n\n{}\n\n{}\n\n{}\n".format(LINE1, LINE2, LINE3, LINE4, LINE5))
         user_file.close()
-        os.system("emacsclient -nc $argv {}".format(FILENAME)) # See above if you would like to change the text editor.
+        os.system("vim $argv {}".format(FILENAME)) # See above if you would like to change the text editor.
 
 filecheck()
