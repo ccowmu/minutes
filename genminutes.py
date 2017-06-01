@@ -14,7 +14,7 @@ else:
     FILE_MONTH = "{}".format(MONTH)
 DAY = TODAY.day
 FILE_DAY = DAY
-if 4 <= DAY <= 20 or 24 <= day <= 30:
+if 4 <= DAY <= 20 or 24 <= DAY <= 30:
     FORMAL_DAY = "{}th".format(DAY)
 else:
     FORMAL_DAY = "{}{}".format(DAY, ["st", "nd", "rd"][DAY % 10 - 1])
