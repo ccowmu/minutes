@@ -62,7 +62,18 @@ The cron jobs will pull the human readable minutes from this repo, email the
 human readable markdown language to users, and upload the minutes to the
 website where the markdown is translated and displayed as html.
 
-### Reference ###
+### gmail
+
+When a new computer tries to send the minutes out, google complains and end sends you a security message because it doesn't recognize the activity.
+To get around this, do the following.
+* attempt to send minutes by running the mailer.py.
+* next, open a browser and get into the club gmail.
+* When you get in the club gmail for the first time you may get a security prompt.
+* click on the message and find the link called review acctivity.
+* now find the button which says this is me.
+* then try to send the minutes again and it should work.
+
+# Reference ###
 * [Markdown Syntax Cheatsheet](http://scottboms.com/downloads/documentation/markdown_cheatsheet.pdf)
 * [Online Markdown Syntax Checker](http://www.markdownviewer.com/)
 * [Github flavored markdown](https://help.github.com/articles/github-flavored-markdown)

@@ -35,7 +35,7 @@ else:
 try:
     with open("mailing_list.txt", 'r') as f:
         emails = f.read().splitlines()
-	bcc = ', '.join(emails);
+        bcc = ', '.join(emails);
 except:
     print("Error: could not find mailing list")
 
