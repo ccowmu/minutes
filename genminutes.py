@@ -31,7 +31,11 @@ try:
     REQUEST = requests.get("http://141.218.118.171:5001/json")
     PEOPLE = len(REQUEST.json()['registered'])+REQUEST.json()['others']
     PEOPLE_LIST = ", including: "  + ", ".join(REQUEST.json()['registered'])
+<<<<<<< HEAD
 except requests.exceptions.ConnectionError:   
+=======
+except requests.exceptions.ConnectionError:
+>>>>>>> 11fd7d9410749f3aea8a4d36273493a59840c2dd
     PEOPLE = "x"
     PEOPLE_LIST = ""
 
