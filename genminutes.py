@@ -26,16 +26,14 @@ HOUR = TODAY.strftime("%I")
 MINUTE = TODAY.strftime("%M")
 AMPM = TODAY.strftime("%p")
 DAY_NAME = TODAY.strftime("%A")
-"""
 # The following `try` will obtain the number of people present in the office along with their name if it has been registered with fish. It is always good to count the number of people, since not everyone is connected to the router. If there is not a connection to the router, an "x" will be given in place of the number of people.
 try:
-    REQUEST = requests.get("http://ccshrek.duckdns.org:5001/json")
+    REQUEST = requests.get("http://141.218.118.171:5001/json")
     PEOPLE = len(REQUEST.json()['registered'])+REQUEST.json()['others']
     PEOPLE_LIST = ", including: "  + ", ".join(REQUEST.json()['registered'])
-except requests.exceptions.ConnectionError:
-    """
-PEOPLE = "x"
-PEOPLE_LIST = ""
+except requests.exceptions.ConnectionError:   
+    PEOPLE = "x"
+    PEOPLE_LIST = ""
 
 # This line properly formats the day for the file name.
 FILENAME = "{}{}{}.md".format(YEAR, FILE_MONTH, FILE_DAY)
