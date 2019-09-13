@@ -42,7 +42,7 @@ def to_file(source, filename):
         with open(filename, 'w') as destination_file:
             destination_file.write(source)
     except:
-        print ("Could not write to %s." % filename)q
+        print ("Could not write to %s." % filename)
 
 def md_to_html(source_md):
     ''' Basic function for getting the HTML source for a string. '''
